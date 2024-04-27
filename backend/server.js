@@ -1,5 +1,5 @@
-import app from "./app.js";
 import express from "express";
+const app = express();
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
