@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import Connection from "./database/database.js";
+Connection();
 import authRouter from "./routes/auth.js";
 import userRouter from "./routes/user.js";
 import blogRouter from "./routes/blog.js";
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:["https://mernblog34.netlify.app","http://localhost:5173"],
     methods: ["GET", "PUT", "DELETE", "POST"],
     credentials: true,
   })
@@ -38,5 +39,5 @@ const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server is working at port ${port}`);
 });
-// dbConnection
-Connection();
+
+
