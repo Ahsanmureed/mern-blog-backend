@@ -91,7 +91,7 @@ const loginUser = async (req,res) => {
 const logoutUser  =async (req,res)=>{
   try{
    
-    await res.cookie("token",{ expires: new Date(0) },{
+    await res.cookie("token",{  maxAge: 0 },{
       path:"/",
       sameSite: 'none',
       httpOnly:true,
