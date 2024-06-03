@@ -4,7 +4,7 @@ const verifyToken =(req,res,next)=>{
      if(!token){
       return res.status(401).json({
         success:false,
-        message:"You are not authenticated Person"
+        message:"Unauthorized Person Please Login First"
       })
      }
      jwt.verify(token,process.env.TOKEN_SECRET_KEY,(err,data)=>{
