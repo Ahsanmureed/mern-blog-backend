@@ -45,7 +45,7 @@ const deleteComment = async (req,res)=>{
   }
 }
 const postComments = async (req,res)=>{
-  const comments =await commentModel.find({postId:req.params.postId});
+  const comments =await commentModel.find({postId:req.params.postId}).populate('author',('-password'));
   return res.status(200).json({
     success:true,
     message:"Post comments",

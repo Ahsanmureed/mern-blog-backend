@@ -5,16 +5,12 @@ const commentSchema = new mongoose.Schema({
     required:true
   },
   author:{
-    type:String,
-    required:true
+    type:mongoose.Schema.ObjectId,
+    ref:'Users'
   },
   postId:{
-    type:String,
-    required:true
-  },
-  userId:{
-    type:String,
-    required:true
+    type:mongoose.Schema.ObjectId,
+    ref:"Blogs"
   }
 })
 export default mongoose.model("Comments",commentSchema)

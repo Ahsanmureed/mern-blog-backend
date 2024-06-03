@@ -53,7 +53,7 @@ const deleteBlog= async(req,res)=>{
 }
 const getBlog = async (req,res)=>{
      try {
-       const post = await blogModel.findById(req.params.id);
+       const post = await blogModel.findById(req.params.id).populate('userId',('-password'));
        return res.status(200).json({
         success:true,
         message:"Single Blog details",
@@ -67,12 +67,10 @@ const getBlog = async (req,res)=>{
     }
 }
 const getBlogs = async (req,res)=>{
-  const query = req.query
+  
   try {
-    const searchFilter ={
-      title:{$regex:query.search, $options:"i"}
-    }
-    const posts = await blogModel.find(query.search?searchFilter:null);
+    
+    const posts = await blogModel.find({}).populate('userId',('-password'));
   return res.status(200).json({
     success:true,
     posts
@@ -86,7 +84,7 @@ const getBlogs = async (req,res)=>{
 }
 const userBlogs = async (req,res)=>{
   try {
-    const userBlogs = await blogModel.find({userId:req.params.userId});
+    const userBlogs = await blogModel.find({userId:req.params.userId}).populate('userId',('-password'));
   return res.status(200).json({
     userBlogs
   })
