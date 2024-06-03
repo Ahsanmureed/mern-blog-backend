@@ -76,7 +76,7 @@ const loginUser = async (req,res) => {
     })
   }
   // token 
-  const token = jwt.sign({_id:emailCheck._id,email:emailCheck.email,username:emailCheck.username},process.env.TOKEN_SECRET_KEY,{ expiresIn: '1h' });
+  const token = jwt.sign({_id:emailCheck._id,email:emailCheck.email,username:emailCheck.username},process.env.TOKEN_SECRET_KEY,{ expiresIn: '1m' });
   const {password:pass,...info}=emailCheck._doc
   res.cookie("token",token,{
   sameSite: 'none',
