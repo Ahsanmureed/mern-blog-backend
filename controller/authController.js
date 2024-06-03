@@ -91,12 +91,7 @@ const loginUser = async (req,res) => {
 const logoutUser  =async (req,res)=>{
   try{
    
-    await res.clearCookie("token",{
-      path:"/",
-      sameSite: 'none',
-      httpOnly:true,
-      secure:true
-    }).status(200).json({
+    await res.clearCookie("token").status(200).json({
       success:true,
       message:"User Logout Successfully"
     })
