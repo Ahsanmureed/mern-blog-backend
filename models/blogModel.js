@@ -17,6 +17,7 @@ userId:{
     type:mongoose.Schema.ObjectId,
     ref:'Users' 
 },
+
   categories:{
     type:Array
   },
