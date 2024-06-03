@@ -91,7 +91,7 @@ const loginUser = async (req,res) => {
 const logoutUser  =async (req,res)=>{
   try{
    
-    await res.clearCookie("token",{ expires: new Date(0) },{
+    await res.clearCookie("token",{
       path:"/",
       sameSite: 'none',
       httpOnly:true,
