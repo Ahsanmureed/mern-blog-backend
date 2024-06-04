@@ -95,4 +95,25 @@ const userBlogs = async (req,res)=>{
     })
   }
 }
-export {createBlog,updateBlog,deleteBlog,userBlogs,getBlog,getBlogs}
+const searchBlogController = async(req,res)=>{
+  const query=  req.query.q;
+  const regex= new RegExp(query,'i','g');
+  const blogs= await blogModel.find({
+"$or":[
+  {
+    title : regex
+},
+{
+    description : regex
+}
+]
+  })
+  res.json({ 
+    success : true,
+    message : "Search Blog list",
+    data  : blogs 
+   
+   
+})
+}
+export {createBlog,updateBlog,deleteBlog,userBlogs,getBlog,getBlogs,searchBlogController}
