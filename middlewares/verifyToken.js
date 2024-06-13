@@ -11,7 +11,7 @@ const verifyToken =(req,res,next)=>{
       if(err){
         return res.status(403).json({
           success:false,
-          message:"Token is invalid"
+          message:"Unauthorized Person Please Login First"
         })
        }
        req.userId = data._id
