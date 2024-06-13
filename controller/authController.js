@@ -79,12 +79,12 @@ const loginUser = async (req,res) => {
   const token = jwt.sign({_id:emailCheck._id,email:emailCheck.email,username:emailCheck.username},process.env.TOKEN_SECRET_KEY,{ expiresIn: '1h' });
   const {password:pass,...info}=emailCheck._doc
   res.cookie("token",token,{
-  sameSite: 'none',
-  httpOnly:true,
-  secure:true
- }).status(201).json(
-  info
- )
+    sameSite: 'none',
+    httpOnly:true,
+    secure:true
+   }).status(201).json(
+    info
+   )
 
 
 };
